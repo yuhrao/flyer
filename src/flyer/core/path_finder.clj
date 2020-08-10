@@ -28,11 +28,3 @@
      (if new-line?
        (str "\n" new-line-str)
        new-line-str))))
-
-(defn to-result-route-str
-  "Generate the result route in format '<path> R$<value>'"
-  [[path value]]
-  (let [path-str (->> path
-                      (map (comp str/upper-case name))
-                      (str/join  " - "))]
-    (format "%s > $%.2f" path-str value))) 

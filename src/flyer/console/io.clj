@@ -7,11 +7,6 @@
   (flush) 
   (read-line))
 
-(defn valid-answer? [answer]
-  (->> (str/upper-case answer)
-       (re-matches #"(\w{3})[-](\w{3})")
-       boolean))
-
 (defn to-result-route-str
   "Generate the result route in format '<path> R$<value>'"
   [[path value]]
@@ -21,4 +16,4 @@
     (format "%s > $%.2f" path-str value))) 
 
 (defn print-result [routing-result]
-  (print "Best route: " (to-result-route-str routing-result)))
+  (println "Best route:" (to-result-route-str routing-result)))

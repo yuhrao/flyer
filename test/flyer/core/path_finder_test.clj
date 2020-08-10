@@ -79,23 +79,3 @@
       (let [new-line (path-finder/to-csv-str input-route)]
         (is (match? "\nGRU,SDU,20.4"
                     new-line))))))
-
-(deftest produce-result-route-string
-  (let [routing-path [:gru :brc :scl :orl :cdg]
-        routing-value 30.0
-        routing-result [routing-path routing-value]
-        result (path-finder/to-result-route-str routing-result)]
-    (testing "Should produce a normalized result string"
-      (let [[path-str value-str] (str/split result #" > ")
-            value (-> value-str
-                      (str/replace #"\$" "")
-                      read-string
-                      float)
-            path (->> (str/split path-str #" - ")
-                      (map str/lower-case)
-                      (map keyword)
-                      (into []))]
-        
-
-        (is (match? (m/equals [path value])
-                    routing-result))))))

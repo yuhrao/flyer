@@ -16,14 +16,6 @@
       (is (match? question
                   (with-out-str (with-in-str input (console/ask question))))))))
 
-(deftest answer-validation
-(doseq [answer ["asd-fgh" "gru-cdg" "asd-asd"]]
-    (testing "Should be a valid answer"
-      (is (console/valid-answer? answer))))
-  (doseq [answer ["as-d" "asdf" "asd-asdf" "-assdhs"]]
-    (testing "Should be a invalid answer"
-      (is (not (console/valid-answer? answer))))))
-
 (deftest produce-result-route-string
   (let [routing-path [:gru :brc :scl :orl :cdg]
         routing-value 30.0
