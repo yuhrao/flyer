@@ -5,4 +5,4 @@
   (interceptor/map->Interceptor
    {::name ::add-file-path
     :enter (fn [context]
-             (assoc context :csv-file-path file-path))}))
+             (assoc context :file-path file-path))}))
