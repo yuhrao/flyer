@@ -27,8 +27,7 @@
   (require '[flyer.server.routes.route :as route-routes])
   
   (start! {:port 3000
-           :routes [hello-route
-                    route-routes/routes]
+           :routes [route-routes/routes]
            :file-path "resources/input-file.txt"} srv)
 
   (stop! srv)
