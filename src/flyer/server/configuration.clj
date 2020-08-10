@@ -20,7 +20,6 @@
   ([interceptors]
    {:interceptors (->> interceptors
                        (concat [(muuntaja-interceptor/format-interceptor)])
-                       (map interceptor/map->Interceptor)
                        (into []))}))
 
 (def ^:private ring-handlers
