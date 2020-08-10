@@ -54,10 +54,14 @@
                       (str/replace #"\$" "")
                       read-string
                       float)
-            path (->> (str/split path-str #" - ")
-                      (map str/lower-case)
-                      (map keyword)
-                      (into []))]
+            path (->> routing-path
+                      (map name)
+                      (map str/upper-case)
+                      (str/join " - ")
+                      (str "Best route: "))]
 
-        (is (match? (m/equals [path value])
-                    routing-result))))))
+        (is (match? value
+                    routing-value))
+
+        (is (match? path-str
+                    path))))))

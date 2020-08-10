@@ -21,4 +21,4 @@
     (format "%s > $%.2f" path-str value))) 
 
 (defn print-result [routing-result]
-  (print (to-result-route-str routing-result)))
+  (print "Best route: " (to-result-route-str routing-result)))
