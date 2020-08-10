@@ -19,9 +19,10 @@
             (let [{:keys [origin destination]} (normalize-parameters request)
                    result (operations/get-best-route file-path origin destination)]
               (if (nil? result)
-                (assoc context :response {:status 404 :body (str "No route found for " (name origin) "-" (name destination))})
-                (let [[path value] result]
-                  (assoc context :response {:status 200 :body {:path path :value value}})))))})
+                (assoc context :response {:status 404})
+                (let [[path value] result
+                      path-response (into [] (map (comp str/upper-case name) path))]
+                  (assoc context :response {:status 200 :body {:path path-response :value value}})))))})
 
 (def routes
   [["/route"
