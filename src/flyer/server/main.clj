@@ -18,10 +18,6 @@
               (server/start)))))
 
 (comment
-  (def hello-route
-    ["/hello"
-     {:get {:handler (fn [{:keys [testing]}] {:status 200 :body {:hello (str testing "World!")}})}}])
-
   (defonce srv (atom nil))
 
   (require '[flyer.server.routes.route :as route-routes])
