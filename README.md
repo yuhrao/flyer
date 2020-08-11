@@ -76,7 +76,7 @@ Best route: GRU - BRC - SCL - ORL - CDG > $40,00
 Para iteração via API é fornecido um endpoint na rota `/route` com os métodos `GET` e `POST` disponíveis. Com eles é possível obter rotas e cadastrar novas escalas. Documentação da API também disponível via:
 
 - Swagger na rota raiz (`/`).
-- (Insomnia Workspace)[https://github.com/YuhriBernardes/flyer/blob/main/doc/flyer_insomnia.json] - doc/flyer_insomnia.json (Veja como importar [aqui](https://support.insomnia.rest/article/52-importing-and-exporting-data))
+- [Insomnia Workspace](https://github.com/YuhriBernardes/flyer/blob/main/doc/flyer_insomnia.json) - doc/flyer_insomnia.json (Veja como importar [aqui](https://support.insomnia.rest/article/52-importing-and-exporting-data))
 
 #### Cadastro de novas escalas
 **Endpoint:** `/route`
