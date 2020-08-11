@@ -213,8 +213,6 @@ Dado que a aplicação disponibiliza duas interfaces para utilização (API REST
 
 ## Melhorias
 1. Traduzir este documento para ingês.
-2. Por padrão, considerar os corpos das requisições como `application/json`.
-3. Possibilitar a configuração da porta na qual o web server será disponibilizado.
 4. Melhorar o isolamento das operaçòes de I/O.
 5. Realizar testes funcionais da aplicação (hoje há somente testes unitários).
 6. Disponibilizar aplicação via Docker.
@@ -228,6 +226,8 @@ Dado que a aplicação disponibiliza duas interfaces para utilização (API REST
 
 - Histórico de pesquisas
 - Alterar endpoint de busca de rotas para outro path (`/route/match`)
+- Por padrão, considerar os corpos das requisições como `application/json`.
+- Possibilitar a configuração da porta na qual o web server será disponibilizado.
 - Adição de recursos ao endpoint de escalas
   - Obter todas escalas cadastradas
   - Implementar filtro na obtenção das escalas
