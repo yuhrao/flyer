@@ -17,3 +17,10 @@
 
 (defn print-result [routing-result]
   (println "Best route:" (to-result-route-str routing-result)))
+
+(defn print-not-found [& targets]
+  (->> targets
+       (map name)
+       (map str/upper-case)
+       (str/join "-")
+       (println "No routes found for")))

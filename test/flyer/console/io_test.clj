@@ -57,3 +57,12 @@
 
         (is (match? path-str
                     path))))))
+
+(deftest print-route-not-found
+  (let [origin :abc
+        destination :def
+        output (with-out-str (console/print-not-found origin destination))]
+    (testing "Should print formatted result"
+      (is (match? "No route found for ABC-DEF\n" output)))))
+
+(str/includes? "Oi tudo bem?" "Oi tudo")
