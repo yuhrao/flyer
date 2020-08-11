@@ -189,11 +189,12 @@ curl --request GET \
 Dado que a aplicação disponibiliza duas interfaces para utilização (API REST e console), foi optado por isolar a camada que detinha as regras e operações para que esta seja consumida pelas interfaces. Desta forma, todos os processos relacionados às regras de negócio foram alocadas na pasta `core` e para cada interface foi criado um pacote isolado (`server` e `console`).
 
 ## Melhorias
-1. Por padrão, considerar os corpos das requisições como `application/json`
-2. Possibilitar a configuração da porta na qual o web server será disponibilizado
+1. Por padrão, considerar os corpos das requisições como `application/json`.
+2. Possibilitar a configuração da porta na qual o web server será disponibilizado.
 3. Melhorar o isolamento das operaçòes de I/O.
 4. Realizar testes funcionais da aplicação (hoje há somente testes unitários).
-5. Disponibilizar aplicação via Docker
+5. Disponibilizar aplicação via Docker.
+6. Traduzir este documento para ingês.
 
 ## License
 
