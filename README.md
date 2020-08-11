@@ -11,7 +11,7 @@
 Para executar a aplicação, você pode optar pelas seguintes formas:
 
 - Clonar este repositório `git clone https://github.com/YuhriBernardes/flyer.git`
-- Baixar o arquivo compilado na aba de (releases)[https://github.com/YuhriBernardes/flyer/releases].
+- Baixar o arquivo compilado na aba de [releases](https://github.com/YuhriBernardes/flyer/releases).
 
 ## Utilização
 
