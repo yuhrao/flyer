@@ -6,6 +6,29 @@
   <img alt="Java" src="https://img.shields.io/static/v1?label=Flyer&color=3498db&message=v1.0.0&style=for-the-badge">
 </p>
 
+## Tabela de conteúdos
+
+* [Instalação](#instalação)
+* [Utilização](#utilização)
+   * [Executar diretamente](#executar-diretamente)
+   * [Executar pelo java](#executar-pelo-java)
+* [Testes](#testes)
+* [Documentação](#documentação)
+   * [Resumo](#resumo)
+   * [Observações](#observações)
+   * [Iteração via console](#iteração-via-console)
+      * [Exemplo](#exemplo)
+   * [Iteração via API Rest](#iteração-via-api-rest)
+      * [Cadastro de novas escalas](#cadastro-de-novas-escalas)
+      * [Cadastro de novas escalas](#cadastro-de-novas-escalas-1)
+* [Estrutura de pastas](#estrutura-de-pastas)
+   * [Código fonte](#código-fonte)
+   * [Testes](#testes-1)
+* [Decisões de design](#decisões-de-design)
+* [Melhorias](#melhorias)
+* [License](#license)
+
+
 ## Instalação
 
 Para executar a aplicação, você pode optar pelas seguintes formas:
