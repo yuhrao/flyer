@@ -63,6 +63,6 @@
         destination :def
         output (with-out-str (console/print-not-found origin destination))]
     (testing "Should print formatted result"
-      (is (match? "No route found for ABC-DEF\n" output)))))
+      (is (match? "No routes found for ABC-DEF\n" output)))))
 
 (str/includes? "Oi tudo bem?" "Oi tudo")
