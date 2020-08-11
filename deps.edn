@@ -14,4 +14,4 @@
 
   :uberjar {:extra-deps {seancorfield/depstar {:mvn/version "1.0.97"}}
             :main-opts  ["-m" "hf.depstar.uberjar" "flyer.jar"
-                         "-C" "-m" "yuhribernardes.flyer"]}}}
+                         "-C" "-m" "flyer.main"]}}}
