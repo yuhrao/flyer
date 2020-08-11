@@ -212,14 +212,28 @@ curl --request GET \
 Dado que a aplicação disponibiliza duas interfaces para utilização (API REST e console), foi optado por isolar a camada que detinha as regras e operações para que esta seja consumida pelas interfaces. Desta forma, todos os processos relacionados às regras de negócio foram alocadas na pasta `core` e para cada interface foi criado um pacote isolado (`server` e `console`).
 
 ## Melhorias
-1. Por padrão, considerar os corpos das requisições como `application/json`.
-2. Possibilitar a configuração da porta na qual o web server será disponibilizado.
-3. Melhorar o isolamento das operaçòes de I/O.
-4. Realizar testes funcionais da aplicação (hoje há somente testes unitários).
-5. Disponibilizar aplicação via Docker.
-6. Traduzir este documento para ingês.
+1. Traduzir este documento para ingês.
+2. Por padrão, considerar os corpos das requisições como `application/json`.
+3. Possibilitar a configuração da porta na qual o web server será disponibilizado.
+4. Melhorar o isolamento das operaçòes de I/O.
+5. Realizar testes funcionais da aplicação (hoje há somente testes unitários).
+6. Disponibilizar aplicação via Docker.
+  - Imagem para aplicação Web Server
+  - Imagem para aplicação console
+  - Imagem para aplicação console + Web Server
+7. Utilizar database em memória (atualizar o arquivo de entrada via `cron` talvez...)
+8. Substituir aplicação de console por uma aplicação web (cljs + reagent).
 
-## License
+### Melhorias na aplicação Web Server
+
+- Histórico de pesquisas
+- Alterar endpoint de busca de rotas para outro path (`/route/match`)
+- Adição de recursos ao endpoint de escalas
+  - Obter todas escalas cadastradas
+  - Implementar filtro na obtenção das escalas
+  - Editar escalas cadastradas
+
+## Licença
 
 Copyright © 2020 Yuhri
 
