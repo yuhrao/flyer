@@ -193,6 +193,7 @@ Dado que a aplicação disponibiliza duas interfaces para utilização (API REST
 2. Possibilitar a configuração da porta na qual o web server será disponibilizado
 3. Melhorar o isolamento das operaçòes de I/O.
 4. Realizar testes funcionais da aplicação (hoje há somente testes unitários).
+5. Disponibilizar aplicação via Docker
 
 ## License
 
