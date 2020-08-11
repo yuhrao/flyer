@@ -16,3 +16,6 @@ pom.xml.asc
 
 ### Emacs ###
 .dir-locals.el
+
+## ASDF VM ##
+.tools-versions
