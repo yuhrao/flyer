@@ -1,0 +1,27 @@
+version: "2"
+
+services:
+  full-app:
+    env_file: ../.env
+    ports:
+      - "3000:3000"
+    networks:
+      host: {}
+    build:
+      context: ../
+      dockerfile: ./dockerfiles/Dockerfile.fullapp
+      args:
+        - FILE_PATH=$INPUT_FILE
+    image: flyer:fullapp-1.0.0
+    container_name: flyer-app
+
+  tests:
+    build:
+      context: ../
+      dockerfile: ./dockerfiles/Dockerfile.tests
+    image: flyer:tests-1.0.0
+    container_name: flyer-tests
+
+networks:
+  host:
+    driver: bridge
