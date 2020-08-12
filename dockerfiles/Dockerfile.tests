@@ -1,0 +1,12 @@
+FROM clojure:openjdk-8-tools-deps-slim-buster
+LABEL maintainer="Yuhri Graziano Bernardes <yuhri.graziano@gmail.com>"
+
+WORKDIR /app
+
+COPY ./src ./src
+COPY ./test ./test
+COPY ./deps.edn ./
+
+RUN clojure -A:test -e nil
+
+CMD clojure -A:test -m kaocha.runner
