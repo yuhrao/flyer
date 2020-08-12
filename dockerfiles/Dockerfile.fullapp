@@ -1,0 +1,25 @@
+FROM clojure:openjdk-8-tools-deps-slim-buster as build
+LABEL maintainer="Yuhri Graziano Bernardes <yuhri.graziano@gmail.com>"
+
+WORKDIR /build
+
+COPY ./src ./src
+COPY ./deps.edn ./
+
+RUN clojure -Spom
+
+RUN clojure -A:uberjar
+
+FROM openjdk:8-alpine
+
+WORKDIR /app
+
+COPY --from=build  /build/target/flyer.jar ./
+
+EXPOSE 3000
+
+ARG FILE_PATH=./input-file.csv
+
+COPY $FILE_PATH ./input-file.csv
+
+CMD java -jar ./flyer.jar ./input-file.csv

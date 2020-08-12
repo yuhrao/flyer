@@ -77,6 +77,7 @@
   (-> {::server/type :jetty
        ::server/port port
        ::server/join? false
+       ::server/host "0.0.0.0"
        ::server/routes []
        ::server/secure-headers {:content-security-policy-settings
                                 {:default-src "'self'"
