@@ -247,7 +247,6 @@ Dado que a aplicação disponibiliza duas interfaces para utilização (API REST
 6. Disponibilizar aplicação via Docker.
   - Imagem para aplicação Web Server
   - Imagem para aplicação console
-  - Imagem para aplicação console + Web Server
 7. Utilizar database em memória (atualizar o arquivo de entrada via `cron` talvez...)
 8. Substituir aplicação de console por uma aplicação web (cljs + reagent).
 
