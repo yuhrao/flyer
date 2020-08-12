@@ -9,4 +9,4 @@ COPY ./deps.edn ./
 
 RUN clojure -A:test -e nil
 
-CMD clojure -A:test -m kaocha.runner
+ENTRYPOINT clojure -A:test -m kaocha.runner
