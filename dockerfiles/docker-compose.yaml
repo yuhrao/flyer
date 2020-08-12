@@ -4,7 +4,7 @@ services:
   full-app:
     env_file: ../.env
     ports:
-      - "3000:3000"
+      - "${SERVER_PORT}:3000"
     networks:
       host: {}
     build:
