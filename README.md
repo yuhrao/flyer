@@ -8,11 +8,14 @@
 
 ## Tabela de conteúdos
 
+* [Tabela de conteúdos](#tabela-de-conteúdos)
 * [Instalação](#instalação)
 * [Utilização](#utilização)
    * [Executar diretamente](#executar-diretamente)
    * [Executar pelo java](#executar-pelo-java)
+   * [Executar com Docker](#executar-com-docker)
 * [Testes](#testes)
+   * [Via docker](#via-docker)
 * [Documentação](#documentação)
    * [Resumo](#resumo)
    * [Observações](#observações)
@@ -26,7 +29,8 @@
    * [Testes](#testes-1)
 * [Decisões de design](#decisões-de-design)
 * [Melhorias](#melhorias)
-* [License](#license)
+   * [Melhorias na aplicação Web Server](#melhorias-na-aplicação-web-server)
+* [Licença](#licença)
 
 
 ## Instalação
@@ -57,25 +61,50 @@ SCL,ORL,20
 
 Tendo o clojure instalado na máquina, rode o comando:
 
-    $ clojure -m flyer.main <arquivo-de-entrada>
+``` shell
+clojure -m flyer.main <arquivo-de-entrada>
+```
 
 ### Executar pelo java
 
 Executando o arquivo compilado:
 
-    $ java -jar flyer.jar <arquivo-de-entrada>
+``` shell
+java -jar flyer.jar <arquivo-de-entrada>
+```
 
 Caso não tenha baixado o arquivo compilado ([flyer.jar](https://github.com/YuhriBernardes/flyer/releases)), execute os commandos abaixos.
 
 Gerar Uberjar:
 
-    $ clojure -A:uberjar
+``` shell
+clojure -A:uberjar
+```
+
+### Executar com Docker
+
+1. Configurar o arquivo `.evn` com o caminho do arquivo de entrada e a porta a ser utilizada pelo servidor web
+
+2. Executar o comando:
+
+``` shell
+docker-compose -f ./dockerfiles/docker-compose.yaml run --rm --service-ports full-app
+```
 
 ## Testes
 
 Rode o comando a seguir:
 
-    $ clojure -A:test -m kaocha.runner
+``` shell
+clojuer -A:test -m kaocha.runner
+```
+
+### Via docker
+
+``` shell
+docker-compose -f ./dockerfiles/docker-compose.yaml run --rm tests
+```
+
 
 ## Documentação
 
