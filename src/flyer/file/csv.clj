@@ -33,7 +33,7 @@
     (str "\n" new-line-str)))
 
 ;; TODO: tests
-(defn add-intersection! [file-path {:keys [origin destination cost] :as route}]
-  (->> route
-       route->csv-newline
+(defn add-intersection! [file-path {:keys [origin destination cost] :as intersection}]
+  (->> intersection
+       intersection->csv-newline
        (file/write! file-path)))
