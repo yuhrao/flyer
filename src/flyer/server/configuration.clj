@@ -38,8 +38,7 @@
           :get {:no-doc true
                 :swagger {:info {:title "Flyer API"
                                  :description "An application to get the best routes"}}
-                :handler (swagger/create-swagger-handler)}}]
-          ))
+                :handler (swagger/create-swagger-handler)}}]))
 
 (defn create-router [routes]
   (http/router

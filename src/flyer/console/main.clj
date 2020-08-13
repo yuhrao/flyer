@@ -21,10 +21,3 @@
 (defn loop-requests [file-path]
   (while true
     (request-route file-path)))
-
-(comment
-  (let [file "resources/input-file.txt"]
-    (request-route file)
-
-    #_(loop-requests "resources/input-file.txt"))
-  )
