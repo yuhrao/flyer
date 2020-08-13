@@ -4,16 +4,13 @@
             [clojure.string :as str])
   (:import java.io.FileNotFoundException))
 
-;; TODO: Change tests namespace
 (defn exists? [file-path]
   (.exists (io/file file-path)))
 
-;; TODO: Change tests namespace
 (defn read [file-path]
   (with-open [reader (io/reader file-path)]
     (slurp reader)))
 
-;; TODO: Change tests namespace
 (defn write! [file-path data]
   (if (exists? file-path)
     (with-open [writer (io/writer file-path :append true)]
