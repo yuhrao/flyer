@@ -2,7 +2,7 @@
   (:require [clojure.string :as str]
             [flyer.core.dijkstra :as dj]))
 
-(defn- dijkstra-out->route [preds origin destination]
+(defn- ^:deprecated dijkstra-out->route [preds origin destination]
   "Reverse walk on preds to reconstruct the shortest path"
   (loop [[pred dist] (preds destination) path (list destination)]
     (if (nil? pred)
@@ -11,7 +11,7 @@
         (cons origin path)
         (recur (preds pred) (cons pred path))))))
 
-(defn build-best-route
+(defn ^:deprecated build-best-route
   ([route-map origin destination]
    (let [preds (dj/dijkstra route-map origin destination)
          path (dijkstra-out->route preds origin destination)]
@@ -19,7 +19,7 @@
        nil
        [(into [] path) (second (preds destination))]))))
 
-(defn to-csv-str
+(defn ^:deprecated to-csv-str
   ([route]
    (to-csv-str {:new-line? true} route))
   ([{:keys [new-line?] :as opts} {:keys [origin destination value] :as route}]
@@ -28,3 +28,27 @@
      (if new-line?
        (str "\n" new-line-str)
        new-line-str))))
+
+;; TODO: tests
+(defn- build-path [preds origin destination]
+  "Reverse walk on preds to reconstruct the shortest path"
+  (loop [[pred dist] (preds destination) path (list destination)]
+    (if (nil? pred)
+      nil
+      (if (= pred origin)
+        (cons origin path)
+        (recur (preds pred) (cons pred path))))))
+
+;; TODO: tests
+(defn trace [graph origin destination]
+  (let [preds (dj/dijkstra graph origin destination)
+        path (into [] (-> preds
+                          (build-path origin destination)))
+        value (-> (preds destination)
+                  second)]
+    {:path path
+     :value value}))
+
+;; TODO: tests
+(-> (flyer.file.csv/to-graph "resources/input-file.txt")
+    (trace :gru :cdg))
