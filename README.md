@@ -3,7 +3,7 @@
 <p align="center">
   <img alt="Clojure" src="https://img.shields.io/static/v1?label=Clojure&color=27ae60&message=v1.10.1&style=for-the-badge&logo=Clojure&logoColor=white">
   <img alt="Java" src="https://img.shields.io/static/v1?label=Java&color=e74c3c&message=open-jdk-8+&style=for-the-badge&logo=Java">
-  <img alt="Flyer" src="https://img.shields.io/static/v1?label=Flyer&color=3498db&message=v1.0.0&style=for-the-badge">
+  <img alt="Flyer" src="https://img.shields.io/github/v/tag/YuhriBernardes/flyer?color=3498db&label=flyer&style=for-the-badge">
 </p>
 
 ## Tabela de conteúdos
