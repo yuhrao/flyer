@@ -3,7 +3,7 @@
             [clojure.string :as str]
             [clojure.test :refer [deftest testing is]]
             [matcher-combinators.matchers :as m]
-            [matcher-combinators.test]))
+            [matcher-combinators.test :refer [match?]]))
 
 ;; See visual graph on doc/test-graphs/linear-graph.png
 (deftest linear-graph
@@ -79,3 +79,67 @@
       (let [new-line (path-finder/to-csv-str input-route)]
         (is (match? "\nGRU,SDU,20.4"
                     new-line))))))
+
+(deftest trace-route
+  (testing "Non linear graph"
+    ;; See visual graph on doc/test-graphs/non-linear-graph-A.png
+    (testing "Direct route to destination isn't the best"
+      (let [graph {:a {:b 10 :c 30}
+                   :b {:c 15}}
+            origin :a
+            destination :c
+            best-path [:a :b :c]
+            best-value 25
+            result (path-finder/trace graph origin destination)]
+        (testing "Should build the best route"
+          (is (match? {:path best-path}
+                      result)))
+
+        (testing "Should contain the final cost"
+          (is (match? {:cost best-value}
+                      result)))))
+
+    ;; See visual graph on doc/test-graphs/non-linear-graph-B.png
+    (testing "Direct route to destination is the best"
+      (let [graph {:a {:b 10 :c 15}
+                   :b {:c 15}}
+            origin :a
+            destination :c
+            best-path [:a :c]
+            best-value 15
+            result (path-finder/trace graph origin destination)]
+        (testing "Should build the best route"
+          (is (match? {:path best-path}
+                      result)))
+
+        (testing "Should contain the final cost"
+          (is (match? {:cost best-value}
+                      result))))))
+
+  (testing "Linear graph"
+    (let [graph {:a {:b 10}
+                 :b {:c 15}}
+          origin :a
+          destination :c
+          best-path [:a :b :c]
+          best-value 25
+          result (path-finder/trace graph origin destination)]
+
+      (testing "Should build the best route"
+          (is (match? {:path best-path}
+                      result)))
+
+        (testing "Should contain the final cost"
+          (is (match? {:cost best-value}
+                      result)))))
+
+
+  (testing "Unconnected nodes"
+    (let [graph {:a {:b 10}
+                 :c {:d 15}}
+          origin :a
+          destination :d
+          result (path-finder/trace graph origin destination)]
+
+      (testing "Best route shoudn't exist"
+        (is (nil? result))))))

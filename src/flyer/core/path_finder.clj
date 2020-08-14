@@ -4,7 +4,7 @@
 
 (defn- ^:deprecated dijkstra-out->route [preds origin destination]
   "Reverse walk on preds to reconstruct the shortest path"
-  (loop [[pred dist] (preds destination) path (list destination)]
+  (loop [[pred] (preds destination) path (list destination)]
     (if (nil? pred)
       nil
       (if (= pred origin)
@@ -29,7 +29,6 @@
        (str "\n" new-line-str)
        new-line-str))))
 
-;; TODO: tests
 (defn- build-path [preds origin destination]
   "Reverse walk on preds to reconstruct the shortest path"
   (loop [[pred dist] (preds destination) path (list destination)]
@@ -39,16 +38,12 @@
         (cons origin path)
         (recur (preds pred) (cons pred path))))))
 
-;; TODO: tests
 (defn trace [graph origin destination]
   (let [preds (dj/dijkstra graph origin destination)
-        path (into [] (-> preds
-                          (build-path origin destination)))
-        value (-> (preds destination)
+        path (-> preds
+                 (build-path origin destination))
+        cost (-> (preds destination)
                   second)]
-    {:path path
-     :value value}))
-
-;; TODO: tests
-(-> (flyer.file.csv/to-graph "resources/input-file.txt")
-    (trace :gru :cdg))
+    (when path
+      {:path (into [] path)
+       :cost cost})))
