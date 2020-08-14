@@ -51,9 +51,6 @@
   (let [server-atom (atom nil)
         server-port 3000
         file-path (tu-file/create-new-test-file! "add-routes" "A,B,12")
-        req-path (-> router
-                     (reitit/match-by-name ::route-routes/add)
-                     reitit/match->path)
         req-url (str "http://localhost:" server-port "/route")]
     (try 
       (flyer-server/start! {:port server-port :routes [route-routes/routes]
@@ -62,21 +59,20 @@
       (testing "Valid route request"
         (let [response (client-http/get req-url
                                         {:query-params {"origin" "A"
-                                                        "destination" "B"}
-                                         :accept :json})
+                                                        "destination" "B"}})
               response-body (json/decode (:body response) true)]
           (testing "Response should return status 'success'"
             (is (match?  200
                          (:status response))))
           (testing "Response should return path and value"
-            (is (match? {:path vector? :value number?}
+            (is (match? {:path vector? :cost number?}
                         response-body)))
 
           (testing "Responde should return right values"
             (is (match? ["A" "B"]
                         (:path response-body)))
             (is (match? 12.0
-                        (:value response-body))))))
+                        (:cost response-body))))))
 
       (testing "Valid route request"
         (testing "Response should return status 'not found'"
@@ -84,30 +80,7 @@
                              {:status 404}
                              (client-http/get req-url
                                               {:query-params {"origin" "A"
-                                                              "destination" "C"}
-                                               :accept :json})))))
+                                                              "destination" "C"}})))))
       (finally 
         (tu-file/delete-test-file! file-path)
         (flyer-server/stop! server-atom)))))
-
-(comment
-  (let [router (reitit/router route-routes/routes)]
-    (testing "Should contain post method for path /route"
-      (reitit/match->path (reitit/match-by-path router "/route") {:origin "GRU" :destination "CDG"})))
-
-  (let [server-port 3000
-        req-url "http://localhost:3000/route"
-        response (client-http/get req-url
-                                  {:query-params {"origin" "GRU"
-                                                  "destination" "CDG"}
-                                   :accept :json})
-        response-body (json/decode (:body response) true)]
-
-    response-body
-    )
-
-  (deftest tst-tst
-    (is (thrown-match? clojure.lang.ExceptionInfo
-                       {:status 404}
-                       )))
-)
