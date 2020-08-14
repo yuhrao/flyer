@@ -1,6 +1,5 @@
 (ns flyer.console.io
-  (:require [clojure.string :as str]
-            [flyer.core.operations :as operations]))
+  (:require [clojure.string :as str]))
 
 (defn ask [question]
   (print question) 
@@ -9,11 +8,11 @@
 
 (defn to-result-route-str
   "Generate the result route in format '<path> R$<value>'"
-  [[path value]]
+  [{:keys [path cost]}]
   (let [path-str (->> path
                       (map (comp str/upper-case name))
                       (str/join  " - "))]
-    (format "%s > $%.2f" path-str value))) 
+    (format "%s > $%.2f" path-str cost)))
 
 (defn print-result [routing-result]
   (println "Best route:" (to-result-route-str routing-result)))
