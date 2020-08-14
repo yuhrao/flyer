@@ -1,6 +1,5 @@
 (ns flyer.server.configuration
-  (:require [io.pedestal.interceptor :as interceptor]
-            [io.pedestal.http :as server]
+  (:require [io.pedestal.http :as server]
             [muuntaja.core :as m]
             [reitit.coercion.spec]
             [reitit.http :as http]
