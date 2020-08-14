@@ -1,6 +1,5 @@
 (ns flyer.server.routes.route
-  (:require [flyer.core.operations :as operations]
-            [flyer.file.csv :as csv]
+  (:require [flyer.file.csv :as csv]
             [flyer.core.path-finder :as path-finder]
             [medley.core :as medley]
             [clojure.string :as str]))
