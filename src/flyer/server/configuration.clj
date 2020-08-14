@@ -6,8 +6,6 @@
             [reitit.http :as http]
             [reitit.http.coercion :as coercion]
             [reitit.http.interceptors.exception :as exception]
-            [reitit.http.interceptors.multipart :as multipart]
-            [reitit.http.interceptors.muuntaja :as muuntaja-interceptor]
             [reitit.http.interceptors.muuntaja :as muuntaja]
             [reitit.http.interceptors.parameters :as parameters]
             [reitit.pedestal :as pedestal]
@@ -19,7 +17,7 @@
   ([] (add-default-interceptors nil))
   ([interceptors]
    {:interceptors (->> interceptors
-                       (concat [(muuntaja-interceptor/format-interceptor)])
+                       (concat [(muuntaja/format-interceptor)])
                        (into []))}))
 
 (def ^:private ring-handlers
@@ -60,9 +58,7 @@
                          ;; coercing response bodys
                          (coercion/coerce-response-interceptor)
                          ;; coercing request parameters
-                         (coercion/coerce-request-interceptor)
-                         ;; multipart
-                         (multipart/multipart-interceptor)]}}))
+                         (coercion/coerce-request-interceptor)]}}))
 
 
 (defn router-interceptor [{:keys [routes default-interceptors]}]
