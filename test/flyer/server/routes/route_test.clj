@@ -3,9 +3,8 @@
             [cheshire.core :as json]
             [flyer.server.main :as flyer-server]
             [reitit.core :as reitit]
-            [matcher-combinators.test]
+            [matcher-combinators.test :refer [match? thrown-match?]]
             [clojure.test :refer [deftest testing is]]
-            [matcher-combinators.matchers :as m]
             [clj-http.client :as client-http]
             [test-utils.file :as tu-file]))
 
@@ -22,21 +21,18 @@
 (deftest add-routes
   (let [server-atom (atom nil)
         server-port 3000
-        file-path (tu-file/create-new-test-file! "add-routes" "")
-        req-path (-> router
-                     (reitit/match-by-name ::route-routes/add)
-                     reitit/match->path)
-        req-url (str "http://localhost:" server-port "/route")]
+        file-path   (tu-file/create-new-test-file! "add-routes" "")
+        req-url     (str "http://localhost:" server-port "/route")]
     (try 
-      (flyer-server/start! {:port server-port :routes [route-routes/routes]
+      (flyer-server/start! {:port      server-port :routes [route-routes/routes]
                             :file-path file-path} server-atom)
 
       (let [response (client-http/post req-url
-                                       {:body (json/encode {:origin "A"
-                                                            :destination "B"
-                                                            :value 12})
+                                       {:body    (json/encode {:origin      "A"
+                                                               :destination "B"
+                                                               :cost        12})
                                         :headers {"Content-Type" "application/json"}
-                                        :accept :json})]
+                                        :accept  :json})]
         (testing "Response should return status 'created'"
           (is (match?  201
                       (:status response))))
