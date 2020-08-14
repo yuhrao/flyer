@@ -1,5 +1,4 @@
-(ns flyer.server.common-interceptors
-  (:require [io.pedestal.interceptor :as interceptor]))
+(ns flyer.server.common-interceptors)
 
 (defn route-csv-interceptor [file-path]
   {::name ::add-file-path
