@@ -19,7 +19,7 @@
 (deftest produce-result-route-string
   (let [routing-path [:gru :brc :scl :orl :cdg]
         routing-value 30.0
-        routing-result [routing-path routing-value]
+        routing-result {:path routing-path :cost routing-value}
         result (console/to-result-route-str routing-result)]
     (testing "Should produce a normalized result string"
       (let [[path-str value-str] (str/split result #" > ")
@@ -32,13 +32,13 @@
                       (map keyword)
                       (into []))]
 
-        (is (match? (m/equals [path value])
+        (is (match? (m/equals {:path path :cost value})
                     routing-result))))))
 
 (deftest print-result-route
   (let [routing-path [:gru :brc :scl :orl :cdg]
         routing-value 30.0
-        routing-result [routing-path routing-value]
+        routing-result {:path routing-path :cost routing-value}
         result (with-out-str (console/print-result routing-result))]
     (testing "Should print a normalized result string"
       (let [[path-str value-str] (str/split result #" > ")
@@ -64,5 +64,3 @@
         output (with-out-str (console/print-not-found origin destination))]
     (testing "Should print formatted result"
       (is (match? "No routes found for ABC-DEF\n" output)))))
-
-(str/includes? "Oi tudo bem?" "Oi tudo")
