@@ -1,10 +1,9 @@
-(ns flyer.core.file-test
-  (:require [flyer.core.file :as file]
+(ns flyer.file.core-test
+  (:require [flyer.file.core :as file]
             [clojure.test :refer [deftest testing is]]
-            [matcher-combinators.test]
+            [matcher-combinators.test :refer [match?]]
             [test-utils.file :as tu-file])
-  (:import java.io.FileNotFoundException
-           java.util.UUID))
+  (:import java.io.FileNotFoundException))
 
 (deftest assert-file-existence
   (let [test-file-path (tu-file/create-new-test-file! "new-file.txt" nil)
